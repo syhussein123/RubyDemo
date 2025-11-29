@@ -46,7 +46,53 @@ class Speaker
 
   # important note: you actually modified the class at this point, not just that instance! so if you make a new one it'll now have shout_hello, shout_ruby, etc all as methods!
   speaker2 = Speaker.new
-  speaker2.shout_hello 
+  speaker2.shout_hello
+
+
+  class Party
+    def initialize
+      @characters = ["mario", "luigi", "peach"]  # "these are the heroes we know about."
+    end
+    
+    # note: we can demo this 
+    # def yoshi
+    #     puts "yoshi joined to the party :p!"
+    #   end
+  
+    # "If you call a method that doesn't exist, Ruby sends it here."
+    def method_missing(name, *args, &block) # "name of method to make, args to pass to the method, block to send to method"
+      name_str = name.to_s
+  
+      if @characters.include?(name_str)
+        # "this character method doesn't exist yet... let's create it!"
+        self.class.define_method(name) do
+          puts "#{name_str} has joined the party!"   # "what the new method will do."
+        end
+  
+        # "now that I've created the method, just call it like normal."
+        send(name)
+      else
+        # "I still don't know this character, even with metaprogramming..."
+        puts "Unknown character (not invited): #{name_str}."
+      end
+    end
+  end
+  
+  # "make a new party instance"
+  party = Party.new
+  
+  # "these methods don't exist yet... I will catch them with method_missing and create them."
+  party.mario # first time: handled by method_missing -> define_method using mario -> prints
+  party.luigi   # same idea here
+  party.peach 
+  
+  # "call them again, now they’re real methods on the class! no method_missing needed."
+  party.mario
+  party.luigi
+  
+  # "this one is not in @characters, I can't help anymore."
+  party.yoshi
+  
 
 
   
