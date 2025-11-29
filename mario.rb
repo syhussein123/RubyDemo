@@ -36,34 +36,62 @@ def printAllMethods(party)
     puts "-----"
 end
 
-  # "make a new party instance"
-  party = Party.new
-  printAllMethods(party)
+def printMenu
+    puts "Menu:"
+    puts "1. Show Party Members"
+    puts "2. Add Party Member"
+    puts "3. Exit"
+    puts "Enter your choice:"
+end
 
-  # "these methods don't exist yet... I will catch them with method_missing and create them."
-  party.mario # first time: handled by method_missing -> define_method using mario -> prints
-  party.luigi   # same idea here
-  party.peach 
-  puts "-----"
+party = Party.new
+while true
+    printMenu
+    choice = gets.chomp.to_i
+    case choice
+    when 1
+        printAllMethods(party)
+    when 2
+        puts "Enter the name of the new party member:"
+        new_member = gets.chomp
+        party.send(new_member)
+        puts "-----"
+    when 3
+        puts "Exiting..."
+        break
+    else
+        puts "Invalid choice. Please try again."
+    end
+end
 
-  printAllMethods(party)
+#   # "make a new party instance"
+#   party = Party.new
+#   printAllMethods(party)
 
-  # "call them again, now they’re real methods on the class! no method_missing needed."
-  party.mario
-  party.luigi
+#   # "these methods don't exist yet... I will catch them with method_missing and create them."
+#   party.mario # first time: handled by method_missing -> define_method using mario -> prints
+#   party.luigi   # same idea here
+#   party.peach 
+#   puts "-----"
+
+#   printAllMethods(party)
+
+#   # "call them again, now they’re real methods on the class! no method_missing needed."
+#   party.mario
+#   party.luigi
   
-  # "this one is not in @characters, I can't help anymore."
-  #party.yoshi
-  puts "-----"
-  printAllMethods(party)
+#   # "this one is not in @characters, I can't help anymore."
+#   #party.yoshi
+#   puts "-----"
+#   printAllMethods(party)
 
-  #showcasing inheritance of methods to new instances after metaprogramming has modified the class
-  party2 = Party.new
-  printAllMethods(party2)
+#   #showcasing inheritance of methods to new instances after metaprogramming has modified the class
+#   party2 = Party.new
+#   printAllMethods(party2)
 
-  party2.daisy
-  puts "-----"
-  printAllMethods(party2)
+#   party2.daisy
+#   puts "-----"
+#   printAllMethods(party2)
 
 
 
