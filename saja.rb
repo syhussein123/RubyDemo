@@ -28,8 +28,7 @@ class Speaker
         super #a key word (similar to java when you use super to inherit from a parent class) means: “I’m not handling this missing method... go look at the parent classes method_missing. If they don't handle it, Ruby will raise the usual NoMethodError.”
       end
     end
-  
-    def respond_to_missing?(method_name, include_private = false)
+      def respond_to_missing?(method_name, include_private = false)
       method_name.to_s.start_with?("shout_") || super
     end
   end
