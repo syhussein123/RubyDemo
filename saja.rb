@@ -1,4 +1,7 @@
 #i know youre gonna eat down fr AYYYEEE
+# these are just some basic ruby examples to show syntax and stuff
+# not part of the demo just some extra stuff I was playing with
+
 
 puts "typeeee"
 

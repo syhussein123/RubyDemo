@@ -1,3 +1,6 @@
+# these are just some basic ruby examples to show syntax and stuff
+# not part of the demo just some extra stuff I was playing with
+
 # basic print statement: 
 puts "ayoooo helllooooooo"
 
@@ -107,3 +110,33 @@ l.city = "New York"
 l.country = "USA"
 puts l.city        # Output: New York
 puts l.country     # Output: USA
+
+
+
+# def printMenu
+#     puts "Menu:"
+#     puts "1. Show Party Members"
+#     puts "2. Add Party Member"
+#     puts "3. Exit"
+#     puts "Enter your choice:"
+# end
+
+# party = Party.new
+# while true
+#     printMenu
+#     choice = gets.chomp.to_i
+#     case choice
+#     when 1
+#         printAllMethods(party)
+#     when 2
+#         puts "Enter the name of the new party member:"
+#         new_member = gets.chomp
+#         party.send(new_member)
+#         puts "-----"
+#     when 3
+#         puts "Exiting..."
+#         break
+#     else
+#         puts "Invalid choice. Please try again."
+#     end
+# end
